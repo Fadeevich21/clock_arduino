@@ -213,7 +213,7 @@ void setup()
     ds3231.turn_off_alarm2();
 
     // ---TEST---
-    ds3231.set_alarm1(0, 10, 0, 0x08);
+    ds3231.set_alarm1(0, 0, 3, 0x08);
     // ----------
 
     pca9538.configuration(0x70, 0x00);
@@ -246,11 +246,16 @@ void loop()
             pca9538.outputPort(0x70, 0b01000111);
         }
         pca9538.polarityInversion(0x70, 0b01101100);
+    } else
+    {
+        if (ds3231.get_time() >= ds3231.get_alarm1())
+        {
+            alarm = true;
+        }
     }
     lcd.clear();
 
     int potenciometers_value = analogRead(POTENCIOMETERS_PIN);
-
     int servo_angle = potenciometers_value <= POTENCIOMETERS_MIDDLE_VALUE ? 0 : 90;
     servo.write(servo_angle);
     if (digitalRead(JOY_SEL_PIN) == JOY_CLICK)
@@ -269,7 +274,6 @@ void loop()
     print_time(time);
 
     delay(100);
-    // time.inc_second();
 }
 
 

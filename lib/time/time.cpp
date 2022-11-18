@@ -94,3 +94,19 @@ char* Time_t::get_time_str()
 
     return time_str;
 }
+
+
+bool operator>=(const Time_t &lhs, const Time_t &rhs)
+{
+    if (lhs.hour != rhs.hour)
+    {
+        return lhs.hour >= rhs.hour;
+    }
+
+    if (lhs.minute != rhs.minute)
+    {
+        return lhs.minute >= rhs.minute;
+    }
+
+    return lhs.second >= rhs.second;
+}

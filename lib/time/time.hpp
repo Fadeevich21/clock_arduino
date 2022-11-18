@@ -2,7 +2,8 @@
 
 #include <stdint.h>
 
-typedef struct
+
+struct Time_t
 {
     uint8_t hour;
     uint8_t minute;
@@ -19,5 +20,6 @@ public:
 
     void set_time(uint8_t _hour, uint8_t _minute, uint8_t _second);
     char* get_time_str();
-}
-Time_t;
+
+    friend bool operator>=(const Time_t &lhs, const Time_t &rhs);
+};

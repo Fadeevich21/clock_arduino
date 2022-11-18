@@ -36,6 +36,8 @@ class DS3231_
 public:
     DS3231_();
 
+    Time_t get_alarm1();
+
     Time_t get_time();
     uint8_t get_hour();    
     uint8_t get_minute();

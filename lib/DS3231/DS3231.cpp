@@ -77,6 +77,16 @@ uint8_t DS3231_::get_second()
 }
 
 
+Time_t DS3231_::get_alarm1()
+{
+    Time_t time;
+    time.hour = bcd_to_dec(read8(DS3231_ADDR, ALARM1_HOUR_ADDR));
+    time.minute = bcd_to_dec(read8(DS3231_ADDR, ALARM1_MINUTE_ADDR));
+    time.second = bcd_to_dec(read8(DS3231_ADDR, ALARM1_SECOND_ADDR));
+
+    return time;
+}
+
 
 void write(uint8_t addr, uint8_t reg, uint8_t* buffer, uint8_t buffer_len)
 {
