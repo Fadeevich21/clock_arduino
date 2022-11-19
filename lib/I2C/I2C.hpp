@@ -10,6 +10,8 @@
 class I2C
 {   
 private:
+    bool _is_processing;
+
     uint8_t _addr_receiver;
     uint8_t _buff[BUFF_SIZE];
     uint8_t _buff_index;

@@ -1,10 +1,6 @@
 #include "DS3231.hpp"
 #include <Arduino.h>
 #include <Wire.h>
-// #include "I2C.hpp"
-
-
-// I2C i2c;
 
 
 void write8(uint8_t addr, uint8_t reg, uint8_t data);

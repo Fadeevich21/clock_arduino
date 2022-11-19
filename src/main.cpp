@@ -2,7 +2,6 @@
 #include <LiquidCrystal_I2C.h>
 #include <stdint.h>
 #include <Servo.h>
-#include <Adafruit_BMP280.h>
 #include "DS3231.hpp"
 #include "PCA9538DW.hpp"
 #include "time.hpp"
@@ -209,6 +208,7 @@ void isr_TickTock();
 
 void setup()
 {
+    Serial.begin(9600);
     ds3231.turn_off_alarm1();
     ds3231.turn_off_alarm2();
 
